@@ -46,7 +46,7 @@ Func.FBOD <- function(data, iter, k.nn) {
 }
 
 ###############################
-#initial estimation
+#pilot estimation
 ###############################
 sample_fun = function(X0,y0){
   val_s = c()
@@ -416,7 +416,6 @@ aggre_fun <- function(y_train, X_train, B){
 # 
 ###############################
 optfun <- function(w, y_test, X_test, B) {
-  w =  w_init
   l = length(w)
   n = nrow(X_test)
   w_transformed = exp(w)
@@ -555,4 +554,5 @@ CI_fun_BH <- function(db_lasso, Theta_glasso, noise_level, cov0,n,alpha = 0.05) 
        reject = reject_bh,
        fdr_threshold = if (any(significant)) p_sorted[k_max] else alpha/p,
        significant_count = sum(reject_bh))
+
 }
